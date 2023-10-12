@@ -5,7 +5,7 @@ async function postMeetups(req,res){
         console.log('triggred')
   
     
-    const client = await MongoClient.connect('mongodb+srv://pramodsinghthakur0591:ZUVgHFvp81LBdUkq@cluster0.bhci9is.mongodb.net/?retryWrites=true&w=majority/meetups')
+    const client = await MongoClient.connect(`mongodb+srv://${process.env.NEXT_USERNAME}:${process.env.NEXT_PASSWORD}@cluster0.bhci9is.mongodb.net/?retryWrites=true&w=majority/meetups`)
           const db = await client.db()
   
           const collection  = await db.collection('meetups')

@@ -33,7 +33,8 @@ export async function getStaticProps(){
         description:meetup.description,
         address:meetup.address
       }))
-     }
+     },
+     revalidate:1
    }
 }
 

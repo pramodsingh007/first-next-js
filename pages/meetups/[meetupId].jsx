@@ -20,7 +20,7 @@ const Details = (props) => {
 
 export async function getStaticPaths() {
   const client = await MongoClient.connect(
-    "mongodb+srv://pramodsinghthakur0591:ZUVgHFvp81LBdUkq@cluster0.bhci9is.mongodb.net/?retryWrites=true&w=majority/meetups"
+    `mongodb+srv://${process.env.NEXT_USERNAME}:${process.env.NEXT_PASSWORD}@cluster0.bhci9is.mongodb.net/?retryWrites=true&w=majority/meetups`
   );
   const db = await client.db();
   const collection = db.collection("meetups");
@@ -32,6 +32,7 @@ export async function getStaticPaths() {
     paths: data.map((meetup) => ({
       params: { meetupId: meetup._id.toString() },
     })),
+    
   };
 }
 
@@ -39,7 +40,7 @@ export async function getStaticProps(context) {
   const id = context.params.meetupId;
   // console.log(id)
   const client = await MongoClient.connect(
-    "mongodb+srv://pramodsinghthakur0591:ZUVgHFvp81LBdUkq@cluster0.bhci9is.mongodb.net/?retryWrites=true&w=majority/meetups"
+    `mongodb+srv://${process.env.NEXT_USERNAME}:${process.env.NEXT_PASSWORD}@cluster0.bhci9is.mongodb.net/?retryWrites=true&w=majority/meetups`
   );
   const db = await client.db();
   const collection = db.collection("meetups");
@@ -58,6 +59,7 @@ export async function getStaticProps(context) {
         address: data.address,
       },
     },
+    
   };
 }
 
