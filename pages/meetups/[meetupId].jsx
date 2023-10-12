@@ -32,6 +32,7 @@ export async function getStaticPaths() {
     paths: data.map((meetup) => ({
       params: { meetupId: meetup._id.toString() },
     })),
+    revalidate:1
     
   };
 }
@@ -59,6 +60,7 @@ export async function getStaticProps(context) {
         address: data.address,
       },
     },
+    revalidate:1
     
   };
 }
